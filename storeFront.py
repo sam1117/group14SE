@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from driver import setLocation
+from driver import *
 
 
 class Ui_Dialog(object):
@@ -26,17 +26,17 @@ class Ui_Dialog(object):
         self.starkville_location = QtWidgets.QRadioButton(Dialog)
         self.starkville_location.setGeometry(QtCore.QRect(160, 40, 111, 17))
         self.starkville_location.setObjectName("starkville_location")
-        self.starkville_location.toggled.connect(self.onClickedRadioBtn)
+        # self.starkville_location.toggled.connect(self.onClickedRadioBtn)
 
         self.jackson_location = QtWidgets.QRadioButton(Dialog)
         self.jackson_location.setGeometry(QtCore.QRect(160, 70, 111, 17))
         self.jackson_location.setObjectName("jackson_location")
-        self.jackson_location.toggled.connect(self.onClickedRadioBtn)
+        # self.jackson_location.toggled.connect(self.onClickedRadioBtn)
 
         self.memphis_location = QtWidgets.QRadioButton(Dialog)
         self.memphis_location.setGeometry(QtCore.QRect(160, 100, 111, 17))
         self.memphis_location.setObjectName("memphis_location")
-        self.memphis_location.toggled.connect(self.onClickedRadioBtn)
+        # self.memphis_location.toggled.connect(self.onClickedRadioBtn)
 
         self.cash_payment = QtWidgets.QRadioButton(Dialog)
         self.cash_payment.setGeometry(QtCore.QRect(310, 40, 82, 17))
@@ -116,7 +116,7 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-        self.purchase.clicked.connect(checkOptions)
+        self.purchase.clicked.connect(self.checkOptions)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
@@ -136,22 +136,101 @@ class Ui_Dialog(object):
         self.socks.setText(_translate("Dialog", "socks"))
         self.jacket.setText(_translate("Dialog", "jacket"))
 
+    def layout_widgets(layout):
+        return (layout.itemAt(i) for i in range(layout.count()))
+
     def checkOptions(self):
-        print()
+        location = ""
+        paymentMethod = ""
+        cart = []
+        netTotal = 0
+        Total = 0
 
-    def onClickedRadioBtn(self):
-        starkville_location = self.starkville_location
-        jackson_location = self.jackson_location
-        memphis_location = self.memphis_location
+        # Get the store location
+        try:
+            starkville_location = self.starkville_location
+            jackson_location = self.jackson_location
+            memphis_location = self.memphis_location
 
-        if starkville_location.isChecked():
-            setLocation("Starkville_Location")
+            if starkville_location.isChecked():
+                location = setLocation("Starkville_Location")
 
-        if jackson_location.isChecked():
-            setLocation("Jackson_Location")
+            if jackson_location.isChecked():
+                location = setLocation("Jackson_Location")
 
-        if memphis_location.isChecked():
-            setLocation("Memphis_Location")
+            if memphis_location.isChecked():
+                location = setLocation("Memphis_Location")
+
+        except Exception as ex:
+            print("Error at location buttons: ", ex)
+
+        # Get the items and quantities to purchase, then call buildCart
+        try:
+            tmpCart = []
+            if self.hat.isChecked():
+                item = "hat"
+                quantity = self.hat_spinBox.value()
+                tmpCart.append([item, quantity])
+                print(tmpCart)
+
+            if self.jacket.isChecked():
+                item = "jacket"
+                quantity = self.jacket_spinBox.value()
+                tmpCart.append([item, quantity])
+                print(tmpCart)
+
+            if self.pants.isChecked():
+                item = "pants"
+                quantity = self.pants_spinBox.value()
+                tmpCart.append([item, quantity])
+                print(tmpCart)
+
+            if self.shirt.isChecked():
+                item = "shirt"
+                quantity = self.shirt_spinBox.value()
+                tmpCart.append([item, quantity])
+                print(tmpCart)
+
+            if self.shoes.isChecked():
+                item = "shoes"
+                quantity = self.shoes_spinBox.value()
+                tmpCart.append([item, quantity])
+                print(tmpCart)
+
+            if self.socks.isChecked():
+                item = "socks"
+                quantity = self.socks_spinBox.value()
+                tmpCart.append([item, quantity])
+                print(tmpCart)
+
+            if (len(tmpCart) != 0):
+                cart = tmpCart
+                total, netTotal = buildCart(tmpCart)
+
+        except Exception as ex:
+            print("Error at item boxes: ", ex)
+
+        # Get payment method
+        try:
+            cash_payment = self.cash_payment
+            credit_payment = self.credit_payment
+            check_payment = self.check_payment
+
+            if cash_payment.isChecked():
+                paymentMethod = setPaymentMethod("cash")
+
+            if credit_payment.isChecked():
+                paymentMethod = setPaymentMethod("credit")
+
+            if check_payment.isChecked():
+                paymentMethod = setPaymentMethod("check")
+
+        except Exception as ex:
+            print("Error at payment method: ", ex)
+
+        else:
+            purchase(location, paymentMethod, cart, netTotal, total)
+
 
 
 if __name__ == "__main__":
