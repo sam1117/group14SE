@@ -6,96 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>935</width>
-    <height>375</height>
+    <width>722</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QCheckBox" name="checkBox">
+  <widget class="QPushButton" name="purchase">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>100</y>
-     <width>70</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>shirt</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_2">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>120</y>
-     <width>70</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>pants</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_3">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>140</y>
-     <width>70</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>shoes</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_4">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>200</y>
-     <width>70</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>jacket</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_5">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>180</y>
-     <width>70</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>socks</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_6">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>160</y>
-     <width>70</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>hat</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>720</x>
-     <y>340</y>
+     <x>210</x>
+     <y>170</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -104,11 +26,11 @@
     <string>Purchase</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="cancel">
    <property name="geometry">
     <rect>
-     <x>800</x>
-     <y>340</y>
+     <x>290</x>
+     <y>170</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -117,12 +39,12 @@
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton">
+  <widget class="QRadioButton" name="starkville_location">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>50</y>
-     <width>121</width>
+     <x>160</x>
+     <y>40</y>
+     <width>111</width>
      <height>17</height>
     </rect>
    </property>
@@ -130,11 +52,11 @@
     <string>Starkville Location</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton_2">
+  <widget class="QRadioButton" name="jackson_location">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>80</y>
+     <x>160</x>
+     <y>70</y>
      <width>111</width>
      <height>17</height>
     </rect>
@@ -143,18 +65,137 @@
     <string>Jackson Location</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton_3">
+  <widget class="QRadioButton" name="memphis_location">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>110</y>
-     <width>121</width>
+     <x>160</x>
+     <y>100</y>
+     <width>111</width>
      <height>17</height>
     </rect>
    </property>
    <property name="text">
     <string>Memphis Location</string>
    </property>
+  </widget>
+  <widget class="QRadioButton" name="cash_payment">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>40</y>
+     <width>82</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cash</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="credit_payment">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>70</y>
+     <width>82</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Credit</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="check_payment">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>100</y>
+     <width>82</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Check</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>40</y>
+     <width>101</width>
+     <height>154</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="shirt">
+        <property name="text">
+         <string>shirt</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="pants">
+        <property name="text">
+         <string>pants</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="shoes">
+        <property name="text">
+         <string>shoes</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="hat">
+        <property name="text">
+         <string>hat</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="socks">
+        <property name="text">
+         <string>socks</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="jacket">
+        <property name="text">
+         <string>jacket</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QSpinBox" name="shirt_spinBox"/>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="pants_spinBox"/>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="shoes_spinBox"/>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="hat_spinBox"/>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="socks_spinBox"/>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="jacket_spinBox"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

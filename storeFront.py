@@ -8,100 +8,150 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from driver  import *
+from driver import setLocation
 
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(935, 375)
-        self.checkBox = QtWidgets.QCheckBox(Dialog)
-        self.checkBox.setGeometry(QtCore.QRect(100, 100, 70, 17))
-        self.checkBox.setObjectName("checkBox")
+        Dialog.resize(722, 300)
+        self.purchase = QtWidgets.QPushButton(Dialog)
+        self.purchase.setGeometry(QtCore.QRect(210, 170, 75, 23))
+        self.purchase.setObjectName("purchase")
 
-        self.checkBox_2 = QtWidgets.QCheckBox(Dialog)
-        self.checkBox_2.setGeometry(QtCore.QRect(100, 120, 70, 17))
-        self.checkBox_2.setObjectName("checkBox_2")
+        self.cancel = QtWidgets.QPushButton(Dialog)
+        self.cancel.setGeometry(QtCore.QRect(290, 170, 75, 23))
+        self.cancel.setObjectName("cancel")
 
-        self.checkBox_3 = QtWidgets.QCheckBox(Dialog)
-        self.checkBox_3.setGeometry(QtCore.QRect(100, 140, 70, 17))
-        self.checkBox_3.setObjectName("checkBox_3")
+        self.starkville_location = QtWidgets.QRadioButton(Dialog)
+        self.starkville_location.setGeometry(QtCore.QRect(160, 40, 111, 17))
+        self.starkville_location.setObjectName("starkville_location")
+        self.starkville_location.toggled.connect(self.onClickedRadioBtn)
 
-        self.checkBox_4 = QtWidgets.QCheckBox(Dialog)
-        self.checkBox_4.setGeometry(QtCore.QRect(100, 200, 70, 17))
-        self.checkBox_4.setObjectName("checkBox_4")
+        self.jackson_location = QtWidgets.QRadioButton(Dialog)
+        self.jackson_location.setGeometry(QtCore.QRect(160, 70, 111, 17))
+        self.jackson_location.setObjectName("jackson_location")
+        self.jackson_location.toggled.connect(self.onClickedRadioBtn)
 
-        self.checkBox_5 = QtWidgets.QCheckBox(Dialog)
-        self.checkBox_5.setGeometry(QtCore.QRect(100, 180, 70, 17))
-        self.checkBox_5.setObjectName("checkBox_5")
+        self.memphis_location = QtWidgets.QRadioButton(Dialog)
+        self.memphis_location.setGeometry(QtCore.QRect(160, 100, 111, 17))
+        self.memphis_location.setObjectName("memphis_location")
+        self.memphis_location.toggled.connect(self.onClickedRadioBtn)
 
-        self.checkBox_6 = QtWidgets.QCheckBox(Dialog)
-        self.checkBox_6.setGeometry(QtCore.QRect(100, 160, 70, 17))
-        self.checkBox_6.setObjectName("checkBox_6")
+        self.cash_payment = QtWidgets.QRadioButton(Dialog)
+        self.cash_payment.setGeometry(QtCore.QRect(310, 40, 82, 17))
+        self.cash_payment.setObjectName("cash_payment")
 
-        self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(720, 340, 75, 23))
-        self.pushButton.setObjectName("pushButton")
+        self.credit_payment = QtWidgets.QRadioButton(Dialog)
+        self.credit_payment.setGeometry(QtCore.QRect(310, 70, 82, 17))
+        self.credit_payment.setObjectName("credit_payment")
 
-        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(800, 340, 75, 23))
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.check_payment = QtWidgets.QRadioButton(Dialog)
+        self.check_payment.setGeometry(QtCore.QRect(310, 100, 82, 17))
+        self.check_payment.setObjectName("check_payment")
 
-        self.radioButton = QtWidgets.QRadioButton(Dialog)
-        self.radioButton.setGeometry(QtCore.QRect(730, 50, 121, 17))
-        self.radioButton.setObjectName("radioButton")
-        self.radioButton.toggled.connect(self.onClickedRadioBtn)
+        self.widget = QtWidgets.QWidget(Dialog)
+        self.widget.setGeometry(QtCore.QRect(30, 40, 101, 154))
+        self.widget.setObjectName("widget")
 
-        self.radioButton_2 = QtWidgets.QRadioButton(Dialog)
-        self.radioButton_2.setGeometry(QtCore.QRect(730, 80, 111, 17))
-        self.radioButton_2.setObjectName("radioButton_2")
-        self.radioButton_2.toggled.connect(self.onClickedRadioBtn)
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
 
+        self.shirt = QtWidgets.QCheckBox(self.widget)
+        self.shirt.setObjectName("shirt")
+        self.verticalLayout_2.addWidget(self.shirt)
 
-        self.radioButton_3 = QtWidgets.QRadioButton(Dialog)
-        self.radioButton_3.setGeometry(QtCore.QRect(730, 110, 121, 17))
-        self.radioButton_3.setObjectName("radioButton_3")
-        self.radioButton_3.toggled.connect(self.onClickedRadioBtn)
+        self.pants = QtWidgets.QCheckBox(self.widget)
+        self.pants.setObjectName("pants")
+        self.verticalLayout_2.addWidget(self.pants)
 
+        self.shoes = QtWidgets.QCheckBox(self.widget)
+        self.shoes.setObjectName("shoes")
+        self.verticalLayout_2.addWidget(self.shoes)
+
+        self.hat = QtWidgets.QCheckBox(self.widget)
+        self.hat.setObjectName("hat")
+        self.verticalLayout_2.addWidget(self.hat)
+
+        self.socks = QtWidgets.QCheckBox(self.widget)
+        self.socks.setObjectName("socks")
+        self.verticalLayout_2.addWidget(self.socks)
+
+        self.jacket = QtWidgets.QCheckBox(self.widget)
+        self.jacket.setObjectName("jacket")
+        self.verticalLayout_2.addWidget(self.jacket)
+
+        self.horizontalLayout.addLayout(self.verticalLayout_2)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+
+        self.shirt_spinBox = QtWidgets.QSpinBox(self.widget)
+        self.shirt_spinBox.setObjectName("shirt_spinBox")
+        self.verticalLayout.addWidget(self.shirt_spinBox)
+
+        self.pants_spinBox = QtWidgets.QSpinBox(self.widget)
+        self.pants_spinBox.setObjectName("pants_spinBox")
+        self.verticalLayout.addWidget(self.pants_spinBox)
+
+        self.shoes_spinBox = QtWidgets.QSpinBox(self.widget)
+        self.shoes_spinBox.setObjectName("shoes_spinBox")
+        self.verticalLayout.addWidget(self.shoes_spinBox)
+
+        self.hat_spinBox = QtWidgets.QSpinBox(self.widget)
+        self.hat_spinBox.setObjectName("hat_spinBox")
+        self.verticalLayout.addWidget(self.hat_spinBox)
+
+        self.socks_spinBox = QtWidgets.QSpinBox(self.widget)
+        self.socks_spinBox.setObjectName("socks_spinBox")
+        self.verticalLayout.addWidget(self.socks_spinBox)
+
+        self.jacket_spinBox = QtWidgets.QSpinBox(self.widget)
+        self.jacket_spinBox.setObjectName("jacket_spinBox")
+        self.verticalLayout.addWidget(self.jacket_spinBox)
+        self.horizontalLayout.addLayout(self.verticalLayout)
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-        self.pushButton.clicked.connect(checkOptions)
-
+        self.purchase.clicked.connect(checkOptions)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.checkBox.setText(_translate("Dialog", "shirt"))
-        self.checkBox_2.setText(_translate("Dialog", "pants"))
-        self.checkBox_3.setText(_translate("Dialog", "shoes"))
-        self.checkBox_4.setText(_translate("Dialog", "jacket"))
-        self.checkBox_5.setText(_translate("Dialog", "socks"))
-        self.checkBox_6.setText(_translate("Dialog", "hat"))
-        self.pushButton.setText(_translate("Dialog", "Purchase"))
-        self.pushButton_2.setText(_translate("Dialog", "Cancel"))
-        self.radioButton.setText(_translate("Dialog", "Starkville Location"))
-        self.radioButton_2.setText(_translate("Dialog", "Jackson Location"))
-        self.radioButton_3.setText(_translate("Dialog", "Memphis Location"))
+        self.purchase.setText(_translate("Dialog", "Purchase"))
+        self.cancel.setText(_translate("Dialog", "Cancel"))
+        self.starkville_location.setText(_translate("Dialog", "Starkville Location"))
+        self.jackson_location.setText(_translate("Dialog", "Jackson Location"))
+        self.memphis_location.setText(_translate("Dialog", "Memphis Location"))
+        self.cash_payment.setText(_translate("Dialog", "Cash"))
+        self.credit_payment.setText(_translate("Dialog", "Credit"))
+        self.check_payment.setText(_translate("Dialog", "Check"))
+        self.shirt.setText(_translate("Dialog", "shirt"))
+        self.pants.setText(_translate("Dialog", "pants"))
+        self.shoes.setText(_translate("Dialog", "shoes"))
+        self.hat.setText(_translate("Dialog", "hat"))
+        self.socks.setText(_translate("Dialog", "socks"))
+        self.jacket.setText(_translate("Dialog", "jacket"))
 
     def checkOptions(self):
+        print()
 
     def onClickedRadioBtn(self):
-        radioButton = self.radioButton
-        radioButton_2 = self.radioButton_2
-        radioButton_3 = self.radioButton_3
+        starkville_location = self.starkville_location
+        jackson_location = self.jackson_location
+        memphis_location = self.memphis_location
 
-
-        if radioButton.isChecked():
+        if starkville_location.isChecked():
             setLocation("Starkville_Location")
 
-        if radioButton_2.isChecked():
+        if jackson_location.isChecked():
             setLocation("Jackson_Location")
 
-        if radioButton_3.isChecked():
+        if memphis_location.isChecked():
             setLocation("Memphis_Location")
-
 
 
 if __name__ == "__main__":
