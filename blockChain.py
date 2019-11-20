@@ -9,6 +9,7 @@ class Block:
         self.data = data
         self.previous_hash = previous_hash
         self.hash = self.hash_block()
+        self.previous_block = 0
 
     def hash_block(self):
         sha = hasher.sha256()
@@ -89,6 +90,11 @@ def search_by_dataList(chainToSearch, location="default", totalAmount="default",
 
     print("Not found in blockchain")
 
+def addNewBlock(self, transactionData):
+    newTransactionData = get_transaction_data(transactionData)
+    blocktoAdd = next_block(self.previous_block, newTransactionData)
+    incrementChain = (self.previous_block + 1)
+    previous_block = blockchain[incrementChain]
 
 if __name__ == '__main__':
     # Create the blockchain and add the genesis block

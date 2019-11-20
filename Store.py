@@ -8,7 +8,7 @@ class Store:
         self.total = 0
         self.netTotal = 0
         self.taxPercentage = 0.07
-        self.paymentMethod = ""
+        self.paymentMethod = []
         self.cartInProcess = []
 
     def setLocation(self, btnLocation):
@@ -19,6 +19,7 @@ class Store:
 
     def setPaymentMethod(self, paymentMethod):
         self.paymentMethod = paymentMethod
+        print(self.paymentMethod)
 
     def getPaymentMethod(self):
         return self.paymentMethod
@@ -42,7 +43,7 @@ class Store:
                 self.inventory[itemName] = updatedInfo
 
         self.total = (self.netTotal) + (self.netTotal * self.taxPercentage)
-        # return self.total, self.netTotal
+
 
 def purchase(location, paymentMethod, cart, netTotal, total):
     print("Implement later")
