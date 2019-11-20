@@ -13,15 +13,16 @@ class BlockChain:
             self.blockchain.append(self.addedBlock)
             newIndex = self.addedBlock.index
             self.previous_block = self.blockchain[newIndex]
-            self.msgTransactionReceipt(data)
+            self.msgTransactionReceipt()
 
         except Exception as ex:
             print("Error adding to blockchain", ex)
 
-    def msgTransactionReceipt(self, data):
+    def msgTransactionReceipt(self):
         transactionID = self.addedBlock.index
         transactionDate = self.addedBlock.timestamp
-        transactionItems = data[1]
+        transactionLocation = self.addedBlock.data[0]
+        transactionItems = self.addedBlock.data[1]
         transactionNetTotal = self.addedBlock.data[2]
         transactionTaxAmount = self.addedBlock.data[3]
         transactionTotal = self.addedBlock.data[4]
@@ -49,7 +50,7 @@ class BlockChain:
         msg = QMessageBox()
         msg.setWindowTitle("Transaction Receipt")
         msg.setIcon(QMessageBox.Information)
-        msg.setText("TransactionID: " + str(transactionID) + "\nDate: " + str(transactionDate))
+        msg.setText("Location: " + str(transactionLocation) + "\nTransactionID: " + str(transactionID) + "\nDate: " + str(transactionDate))
         msg.setInformativeText("Price:\n$" + str(transactionNetTotal) + "\nTax: $" + str(transactionTaxAmount) + "\nTotal: $" + str(transactionTotal))
         msg.setDetailedText("Items:\n--------------------\n" + itemDetail + "\nPayment Method:\n--------------------\n" + paymentDetail
                             + "\n\nHash:\n--------------------\n" + hashDetail)
