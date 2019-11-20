@@ -35,6 +35,7 @@ def checkOptions(self):
         print("Error at location buttons: ", ex)
 
     # Set the items and quantities to purchase, then call buildCart
+    store.setCart()
     try:
         tmpCart = []
         if self.hat.isChecked():
@@ -76,6 +77,7 @@ def checkOptions(self):
         if (len(tmpCart) != 0):
             store.buildCart(tmpCart)
             buildCartSuccess = True
+            tmpCart = []
 
     except Exception as ex:
         print("Error at item boxes: ", ex)

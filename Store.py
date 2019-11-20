@@ -36,6 +36,9 @@ class Store:
     def getTaxPercentage(self):
         return self.taxPercentage
 
+    def setCart(self):
+        self.cart = []
+
     def getCart(self):
         return self.cart
 
@@ -57,9 +60,5 @@ class Store:
                 updatedInfo = [itemPrice, newInventoryQuantity]
                 self.inventory[itemName] = updatedInfo
 
-        self.taxAmount = (self.netTotal * self.taxPercentage)
+        self.taxAmount = round((self.netTotal * self.taxPercentage), 2)
         self.total = (self.netTotal + self.taxAmount)
-
-
-def purchase(location, paymentMethod, cart, netTotal, total):
-    print("Implement later")
