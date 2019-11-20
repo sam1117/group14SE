@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>742</width>
-    <height>381</height>
+    <width>789</width>
+    <height>407</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -16,6 +16,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowFilePath">
+   <string/>
+  </property>
   <property name="documentMode">
    <bool>false</bool>
   </property>
@@ -23,12 +26,12 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>170</x>
       <y>40</y>
-      <width>101</width>
+      <width>131</width>
       <height>16</height>
      </rect>
     </property>
@@ -38,214 +41,296 @@
      </font>
     </property>
     <property name="text">
-     <string>Store Location</string>
+     <string>Payment Information</string>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="layoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>60</y>
-      <width>101</width>
-      <height>154</height>
+      <x>170</x>
+      <y>70</y>
+      <width>521</width>
+      <height>111</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QCheckBox" name="shirt">
+        <widget class="QRadioButton" name="cash_radioButton">
          <property name="text">
-          <string>shirt</string>
+          <string>Cash</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="pants">
+        <widget class="QRadioButton" name="credit_radioButton">
          <property name="text">
-          <string>pants</string>
+          <string>Credt Card</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="shoes">
+        <widget class="QRadioButton" name="check_radioButton">
          <property name="text">
-          <string>shoes</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="hat">
-         <property name="text">
-          <string>hat</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="socks">
-         <property name="text">
-          <string>socks</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="jacket">
-         <property name="text">
-          <string>jacket</string>
+          <string>Check</string>
          </property>
         </widget>
        </item>
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
-        <widget class="QSpinBox" name="shirt_spinBox"/>
+        <widget class="QLineEdit" name="cash_LineText">
+         <property name="placeholderText">
+          <string>$ Cash amount</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="pants_spinBox"/>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLineEdit" name="creditName_lineEdit">
+           <property name="placeholderText">
+            <string>Card holder</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="creditNumber_lineEdit">
+           <property name="placeholderText">
+            <string>Card number</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="creditCSV_lineEdit">
+           <property name="placeholderText">
+            <string>Security code</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QSpinBox" name="shoes_spinBox"/>
-       </item>
-       <item>
-        <widget class="QSpinBox" name="hat_spinBox"/>
-       </item>
-       <item>
-        <widget class="QSpinBox" name="socks_spinBox"/>
-       </item>
-       <item>
-        <widget class="QSpinBox" name="jacket_spinBox"/>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLineEdit" name="checkHolder_lineEdit">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Account name</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="checkAccount_lineEdit">
+           <property name="placeholderText">
+            <string>Account number</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="checkPayTo_lineEdit">
+           <property name="placeholderText">
+            <string>Pay to</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="checkAmount_lineEdit">
+           <property name="placeholderText">
+            <string>Check amount</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>240</y>
+      <width>84</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Store Location</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox">
+       <item>
+        <property name="text">
+         <string>Starkville</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Jackson</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Memphis</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>50</x>
       <y>40</y>
-      <width>81</width>
-      <height>16</height>
+      <width>103</width>
+      <height>178</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Inventory</string>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Inventory</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QCheckBox" name="shirt">
+           <property name="text">
+            <string>shirt</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="pants">
+           <property name="text">
+            <string>pants</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="shoes">
+           <property name="text">
+            <string>shoes</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="hat">
+           <property name="text">
+            <string>hat</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="socks">
+           <property name="text">
+            <string>socks</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="jacket">
+           <property name="text">
+            <string>jacket</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QSpinBox" name="shirt_spinBox"/>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="pants_spinBox"/>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="shoes_spinBox"/>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="hat_spinBox"/>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="socks_spinBox"/>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="jacket_spinBox"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>60</y>
-      <width>69</width>
-      <height>22</height>
+      <x>460</x>
+      <y>280</y>
+      <width>239</width>
+      <height>25</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>Starkville</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Jackson</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Memphis</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QRadioButton" name="credit_payment">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>90</y>
-      <width>82</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Credit</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="purchase">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>200</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Purchase</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="check_payment">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>120</y>
-      <width>82</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Check</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>40</y>
-      <width>101</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Payment Method</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="cash_payment">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>60</y>
-      <width>82</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cash</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="cancel">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>200</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cancel</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="purchase">
+       <property name="text">
+        <string>Purchase</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="search_transactions">
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Transactions</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="quit">
+       <property name="text">
+        <string>Quit</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -253,7 +338,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>742</width>
+     <width>789</width>
      <height>21</height>
     </rect>
    </property>
