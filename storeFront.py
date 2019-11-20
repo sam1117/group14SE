@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from driver import *
+from Store import *
 
 
 class Ui_Dialog(object):
