@@ -11,7 +11,6 @@ class Block:
         self.data = data
         self.previous_hash = previous_hash
         self.hash = self.hash_block()
-        # self.previous_block = 0
 
     def hash_block(self):
         sha = hasher.sha256()
@@ -53,9 +52,6 @@ def search_by_id(chainToSearch, searchData): #searchData[index, timestamp, data[
             print("INDEX:     " + str(block.index), searchData)
             break
 
-        # else:
-        #     print("NO BLOCK FOUND")
-
     print("Not found in blockchain")
 
 
@@ -69,9 +65,6 @@ def search_by_timestamp(chainToSearch, searchData):
             print("MATCH ON TIMESTAMP")
             print("TIMESTAMP:     " + str(block.timestamp), searchData)
             break
-
-        # else:
-        #     print("NO BLOCK FOUND")
 
     print("Not found in blockchain")
 
