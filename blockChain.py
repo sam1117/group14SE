@@ -1,6 +1,8 @@
 import datetime as date
 import hashlib as hasher
 
+from driver import *
+
 
 class Block:
     def __init__(self, index, timestamp, data, previous_hash):
@@ -9,7 +11,7 @@ class Block:
         self.data = data
         self.previous_hash = previous_hash
         self.hash = self.hash_block()
-        self.previous_block = 0
+        # self.previous_block = 0
 
     def hash_block(self):
         sha = hasher.sha256()
@@ -89,34 +91,3 @@ def search_by_dataList(chainToSearch, location="default", totalAmount="default",
             return block
 
     print("Not found in blockchain")
-
-def addNewBlock(self, transactionData):
-    newTransactionData = get_transaction_data(transactionData)
-    blocktoAdd = next_block(self.previous_block, newTransactionData)
-    incrementChain = (self.previous_block + 1)
-    previous_block = blockchain[incrementChain]
-
-if __name__ == '__main__':
-    # Create the blockchain and add the genesis block
-    blockchain = [create_genesis_block()]
-    previous_block = blockchain[0]
-
-    newTransactionData = get_transaction_data("142 Wallaby Way Sydney, Australia", ["shirt", "shoes", "pants"], 134.41, 8.79, 0.00, "Credit: " + "Visa, " + str(123456789))
-    blocktoAdd = next_block(previous_block, newTransactionData)
-    blockchain.append(blocktoAdd)
-    previous_block = blockchain[1]
-
-    newTransactionData = get_transaction_data("100 Bulldog Blvd Starkville, MS", ["football", "cleats", "helmet"], 58123.58, 3802.48, (60000 - 58123.58), "Cash: " + str(60000))
-    blocktoAdd = next_block(previous_block, newTransactionData)
-    blockchain.append(blocktoAdd)
-    previous_block = blockchain[2]
-
-    newTransactionData = get_transaction_data("200 Bulldog Blvd Starkville, MS", ["football", "cleats", "helmet"], 58123.58, 3802.48, (60000 - 58123.58), "Cash: " + str(60000))
-    blocktoAdd = next_block(previous_block, newTransactionData)
-    blockchain.append(blocktoAdd)
-    previous_block = blockchain[3]
-
-    search_by_id(blockchain, 1)
-    search_by_timestamp(blockchain, "2019-11-17")
-    resultBlock = search_by_dataList(blockchain, "200 Bulldog Blvd Starkville, MS", "58123.58", "Cash: " + str(60000))
-    print(resultBlock)
