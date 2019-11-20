@@ -5,11 +5,12 @@ class Store:
         #    inventory = {"item mane": [price, quantity], ... }
         self.inventory = {"jacket": [20.00, 10], "shirt": [7.00, 10], "pants": [9.00, 10], "shoes": [15.00, 10], "hat": [5.00, 10], "socks": [3.00, 10]}
         self.location = ""
+        self.paymentMethod = []
         self.total = 0
         self.netTotal = 0
+        self.taxAmount = 0
         self.taxPercentage = 0.07
-        self.paymentMethod = []
-        self.cartInProcess = []
+        self.cart = []
 
     def setLocation(self, btnLocation):
         self.location = btnLocation
@@ -19,10 +20,24 @@ class Store:
 
     def setPaymentMethod(self, paymentMethod):
         self.paymentMethod = paymentMethod
-        print(self.paymentMethod)
 
     def getPaymentMethod(self):
         return self.paymentMethod
+
+    def getTotal(self):
+        return self.total
+
+    def getNetTotal(self):
+        return self.netTotal
+
+    def getTaxAmount(self):
+        return self.taxAmount
+
+    def getTaxPercentage(self):
+        return self.taxPercentage
+
+    def getCart(self):
+        return self.cart
 
     def buildCart(self, cart):
 
@@ -36,13 +51,14 @@ class Store:
             if (itemAvailable >= quantityWanted):
 
                 self.netTotal += (itemPrice * quantityWanted)
-                self.cartInProcess.append([itemName, quantityWanted])
+                self.cart.append([itemName, quantityWanted])
 
                 newInventoryQuantity = (itemAvailable - quantityWanted)
                 updatedInfo = [itemPrice, newInventoryQuantity]
                 self.inventory[itemName] = updatedInfo
 
-        self.total = (self.netTotal) + (self.netTotal * self.taxPercentage)
+        self.taxAmount = (self.netTotal * self.taxPercentage)
+        self.total = (self.netTotal + self.taxAmount)
 
 
 def purchase(location, paymentMethod, cart, netTotal, total):

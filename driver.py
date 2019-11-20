@@ -2,10 +2,12 @@ from PyQt5.QtWidgets import QMessageBox
 
 from storeMain import *
 from searchDialog import *
-from blockChain import *
+from blockchainController import  *
 from Store import  *
 
+# Create a store instance
 store = Store()
+blockChain = BlockChain()
 
 def msgBoxPayment():
     msg = QMessageBox()
@@ -137,4 +139,36 @@ def checkOptions(self):
         print("Error at payment method: ", ex)
 
     if (locationSuccess and buildCartSuccess and paymentMethodSuccess):
-        print()
+        transactionLocation = store.getLocation()
+        transactionCart = store.getCart()
+        transactionNetTotal = store.getNetTotal()
+        transactionTaxAmount = store.getTaxAmount()
+        transactionTotal = store.getTotal()
+        transactionPaymentMethod = store.getPaymentMethod()
+
+        transaction = [transactionLocation, transactionCart, transactionNetTotal, transactionTaxAmount, transactionTotal, transactionPaymentMethod]
+        blockChain.addToBlockchain(transaction)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
