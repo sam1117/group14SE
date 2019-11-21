@@ -52,7 +52,7 @@ class BlockChain:
 
 
         except Exception as ex:
-            print("Error at search_by_date: ", ex)
+            print("Error at search_by_date: ", ex, " (Hits when end of blockchain reached signaling end of search, this is intended)")
             return resultBlocks
 
     def msgTransactionReceipt(self):
@@ -74,7 +74,6 @@ class BlockChain:
 
         paymentDetail = ""
         for i in range(len(transactionPayMethod)):
-            print(transactionPayMethod[i], type(transactionPayMethod[i]))
             tmp = str(transactionPayMethod[i])
 
             if (i == 0):

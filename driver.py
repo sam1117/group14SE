@@ -72,6 +72,8 @@ def receiptFromDateSearch(self, blockList):
         msgBoxNoResult()
 
     try:
+        self.textEdit.clear()
+
         for index in range(len(blockList)):
             resultID = blockList[index].index
             resultDate = blockList[index].timestamp
@@ -122,6 +124,7 @@ def receiptFromIDSearch(self, block):
         resultStr3 = ("\n" + str(resultItems) + "\n")
         resultStr4 = ("\n" + str(resultHash) + "\n")
 
+        self.textEdit.clear()
         self.textEdit.setText(header + resultStr + header2 + resultStr2 + header3 + resultStr3 + header4 + resultStr4)
         self.textEdit.append("\n-----------------------------------------------------------------------------------------------------------------------------\n")
 

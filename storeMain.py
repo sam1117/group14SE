@@ -8,6 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIntValidator, QDoubleValidator
 from PyQt5.QtWidgets import QTextEdit
 
 from driver import *
@@ -51,6 +52,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.cash_LineText = QtWidgets.QLineEdit(self.layoutWidget_2)
         self.cash_LineText.setObjectName("cash_LineText")
+        self.cash_LineText.setValidator(QDoubleValidator(0.01, 1000000.99, 2))             # Set check amount to only accept float
         self.verticalLayout_6.addWidget(self.cash_LineText)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
@@ -59,9 +61,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.creditName_lineEdit)
         self.creditNumber_lineEdit = QtWidgets.QLineEdit(self.layoutWidget_2)
         self.creditNumber_lineEdit.setObjectName("creditNumber_lineEdit")
+        self.creditNumber_lineEdit.setValidator(QIntValidator())                           # Set card number to only accept integers
         self.horizontalLayout_3.addWidget(self.creditNumber_lineEdit)
         self.creditCSV_lineEdit = QtWidgets.QLineEdit(self.layoutWidget_2)
         self.creditCSV_lineEdit.setObjectName("creditCSV_lineEdit")
+        self.creditCSV_lineEdit.setValidator(QIntValidator())                              # Set card CSV to only accept integers
         self.horizontalLayout_3.addWidget(self.creditCSV_lineEdit)
         self.verticalLayout_6.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
@@ -72,12 +76,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.checkHolder_lineEdit)
         self.checkAccount_lineEdit = QtWidgets.QLineEdit(self.layoutWidget_2)
         self.checkAccount_lineEdit.setObjectName("checkAccount_lineEdit")
+        self.checkAccount_lineEdit.setValidator(QIntValidator())                            # Set check account to only accept integers
         self.horizontalLayout_5.addWidget(self.checkAccount_lineEdit)
         self.checkPayTo_lineEdit = QtWidgets.QLineEdit(self.layoutWidget_2)
         self.checkPayTo_lineEdit.setObjectName("checkPayTo_lineEdit")
         self.horizontalLayout_5.addWidget(self.checkPayTo_lineEdit)
         self.checkAmount_lineEdit = QtWidgets.QLineEdit(self.layoutWidget_2)
         self.checkAmount_lineEdit.setObjectName("checkAmount_lineEdit")
+        self.checkAmount_lineEdit.setValidator(QDoubleValidator(0.01, 1000000.99, 2))       # Set check amount to only accept float
         self.horizontalLayout_5.addWidget(self.checkAmount_lineEdit)
         self.verticalLayout_6.addLayout(self.horizontalLayout_5)
         self.horizontalLayout_4.addLayout(self.verticalLayout_6)
@@ -199,10 +205,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.addWidget(self.label_5)
         self.lineEdit = QtWidgets.QLineEdit(self.layoutWidget_3)
         self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.setValidator(QIntValidator())                                          # Set search lineEdit to only accept integers
         self.verticalLayout_8.addWidget(self.lineEdit)
         self.dateEdit = QtWidgets.QDateEdit(self.layoutWidget_3)
         self.dateEdit.setObjectName("dateEdit")
-        self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())       # Set default date to current system date
+        self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())                      # Set default date to current system date
         self.verticalLayout_8.addWidget(self.dateEdit)
         self.horizontalLayout_6.addLayout(self.verticalLayout_8)
         self.search = QtWidgets.QPushButton(self.centralwidget)
@@ -211,7 +218,7 @@ class Ui_MainWindow(object):
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.textEdit.setGeometry(QtCore.QRect(50, 450, 541, 111))
         self.textEdit.setObjectName("textEdit")
-        self.textEdit.setLineWrapMode(QTextEdit.NoWrap)                     # set textEdit not to wrap lines
+        self.textEdit.setLineWrapMode(QTextEdit.NoWrap)                                    # set textEdit not to wrap lines
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 798, 21))
