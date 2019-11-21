@@ -31,59 +31,9 @@ def next_block(last_block, data):
     this_data = data
     this_hash = last_block.hash
 
-    print(this_index, this_timestamp, this_data, this_hash) #TODO: dubugging purposes only, remove before submitting
-
     return Block(this_index, this_timestamp, this_data, this_hash)
 
 def get_transaction_data(location, itemsPurchased, totalAmount, taxAmount, changeDealt, paymentMethod):
     this_data = [location, itemsPurchased, totalAmount, taxAmount, changeDealt, paymentMethod]
 
     return this_data
-
-
-# def search_by_id(chainToSearch, searchData):
-#
-#     for each in chainToSearch:
-#         # if (i == 0):
-#         #     continue
-#
-#         block = chainToSearch[i]
-#         block_index = int(block.index)
-#
-#         if (block_index == searchData):
-#             print("MATCH ON INDEX")
-#             print("INDEX:     " + str(block.index), searchData)
-#             break
-#
-#     print("Not found in blockchain")
-
-
-def search_by_timestamp(chainToSearch, searchData):
-
-    for i in range(len(chainToSearch)):
-        block = chainToSearch[i]
-        block_timestamp = str(block.timestamp)
-
-        if (searchData in block_timestamp):
-            print("MATCH ON TIMESTAMP")
-            print("TIMESTAMP:     " + str(block.timestamp), searchData)
-            break
-
-    print("Not found in blockchain")
-
-
-def search_by_dataList(chainToSearch, location="default", totalAmount="default", paymentMethod="default"):
-
-    for i in range(len(chainToSearch)):
-        if (i == 0):
-            continue
-
-        block = chainToSearch[i]
-        block_location = str(block.data[0])
-        block_totalAmount = str(block.data[2])
-        block_paymentMethod = str(block.data[5])
-
-        if (block_location == location) or (block_totalAmount == totalAmount) or (block_paymentMethod == paymentMethod):
-            return block
-
-    print("Not found in blockchain")
