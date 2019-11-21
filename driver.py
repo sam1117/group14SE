@@ -6,6 +6,7 @@ from storeMain import *
 from blockchainController import  *
 from Store import  *
 
+
 # Create a store instance
 store = Store()
 blockChain = BlockChain()
@@ -52,8 +53,6 @@ def checkSearchFields(self):
 
         if (self.searchDate_radioButton.isChecked()) and (self.dateEdit.date() != ""):
             qt_date = self.dateEdit.date()
-            # searchField_date = qt_date.toPyDate()
-            print(searchField_date, type(searchField_date))
 
             result = blockChain.search_by_date(qt_date)
             receiptFromDateSearch(self, result)
@@ -62,7 +61,6 @@ def checkSearchFields(self):
 
         if (searchDone == False):
             msgBoxSearch()
-
 
     except Exception as ex:
         print("Error at search buttons: ", ex)
@@ -98,7 +96,6 @@ def receiptFromDateSearch(self, blockList):
     except Exception as ex:
         msgBoxNoResult()
 
-
 def receiptFromIDSearch(self, block):
 
     try:
@@ -125,10 +122,8 @@ def receiptFromIDSearch(self, block):
         self.textEdit.setText(header + resultStr + header2 + resultStr2 + header3 + resultStr3 + header4 + resultStr4)
         self.textEdit.append("\n-----------------------------------------------------------------------------------------------------------------------------\n")
 
-
     except Exception as ex:
         msgBoxNoResult()
-
 
 def checkOptions(self):
     locationSuccess = False
@@ -155,37 +150,31 @@ def checkOptions(self):
             item = "hat"
             quantity = self.hat_spinBox.value()
             tmpCart.append([item, quantity])
-            print(tmpCart)
 
         if self.jacket.isChecked():
             item = "jacket"
             quantity = self.jacket_spinBox.value()
             tmpCart.append([item, quantity])
-            print(tmpCart)
 
         if self.pants.isChecked():
             item = "pants"
             quantity = self.pants_spinBox.value()
             tmpCart.append([item, quantity])
-            print(tmpCart)
 
         if self.shirt.isChecked():
             item = "shirt"
             quantity = self.shirt_spinBox.value()
             tmpCart.append([item, quantity])
-            print(tmpCart)
 
         if self.shoes.isChecked():
             item = "shoes"
             quantity = self.shoes_spinBox.value()
             tmpCart.append([item, quantity])
-            print(tmpCart)
 
         if self.socks.isChecked():
             item = "socks"
             quantity = self.socks_spinBox.value()
             tmpCart.append([item, quantity])
-            print(tmpCart)
 
         if (len(tmpCart) != 0):
             store.buildCart(tmpCart)
@@ -204,6 +193,7 @@ def checkOptions(self):
         if cash_radioButton.isChecked():
             paymentMethodSelected = "cash"
             cash_lineEdit = self.cash_LineText
+
             if (cash_lineEdit.text() != ""):
                 tmppaymentMethod.append(paymentMethodSelected)
                 tmppaymentMethod.append(cash_lineEdit.text())
@@ -216,6 +206,7 @@ def checkOptions(self):
             creditName_lineEdit = self.creditName_lineEdit
             creditNumber_lineEdit = self.creditNumber_lineEdit
             creditCSV_lineEdit = self.creditCSV_lineEdit
+
             if (creditName_lineEdit.text() != "") and (creditNumber_lineEdit.text() != "") and (creditCSV_lineEdit.text() != ""):
                 tmppaymentMethod.append(paymentMethodSelected)
                 tmppaymentMethod.append(creditName_lineEdit.text())
@@ -231,6 +222,7 @@ def checkOptions(self):
             checkAccount_lineEdit = self.checkAccount_lineEdit
             checkPayTo_lineEdit = self.checkPayTo_lineEdit
             checkAmount_lineEdit = self.checkAmount_lineEdit
+
             if (checkHolder_lineEdit.text() != "") and (checkAccount_lineEdit.text() != "") and (checkPayTo_lineEdit.text() != "") and (checkAmount_lineEdit.text()):
                 tmppaymentMethod.append(paymentMethodSelected)
                 tmppaymentMethod.append(checkHolder_lineEdit.text())
@@ -240,7 +232,6 @@ def checkOptions(self):
 
                 store.setPaymentMethod(tmppaymentMethod)
                 paymentMethodSuccess = True
-
 
     except Exception as ex:
         print("Error at payment method: ", ex)
