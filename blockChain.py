@@ -41,18 +41,21 @@ def get_transaction_data(location, itemsPurchased, totalAmount, taxAmount, chang
     return this_data
 
 
-def search_by_id(chainToSearch, searchData): #searchData[index, timestamp, data[location, totalAmount, paymentMethod]]
-
-    for i in range(len(chainToSearch)):
-        block = chainToSearch[i]
-        block_index = int(block.index)
-
-        if (block_index == searchData):
-            print("MATCH ON INDEX")
-            print("INDEX:     " + str(block.index), searchData)
-            break
-
-    print("Not found in blockchain")
+# def search_by_id(chainToSearch, searchData):
+#
+#     for each in chainToSearch:
+#         # if (i == 0):
+#         #     continue
+#
+#         block = chainToSearch[i]
+#         block_index = int(block.index)
+#
+#         if (block_index == searchData):
+#             print("MATCH ON INDEX")
+#             print("INDEX:     " + str(block.index), searchData)
+#             break
+#
+#     print("Not found in blockchain")
 
 
 def search_by_timestamp(chainToSearch, searchData):

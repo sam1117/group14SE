@@ -18,6 +18,17 @@ class BlockChain:
         except Exception as ex:
             print("Error adding to blockchain", ex)
 
+    def search_by_id(self, searchID):
+
+        try:
+            block = self.blockchain[searchID]
+            return block
+
+
+        except Exception as ex:
+            print("Nope!")
+
+
     def msgTransactionReceipt(self):
         transactionID = self.addedBlock.index
         transactionDate = self.addedBlock.timestamp
