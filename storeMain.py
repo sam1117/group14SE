@@ -202,6 +202,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.addWidget(self.lineEdit)
         self.dateEdit = QtWidgets.QDateEdit(self.layoutWidget_3)
         self.dateEdit.setObjectName("dateEdit")
+        self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())       # Set default date to current system date
         self.verticalLayout_8.addWidget(self.dateEdit)
         self.horizontalLayout_6.addLayout(self.verticalLayout_8)
         self.search = QtWidgets.QPushButton(self.centralwidget)
@@ -210,7 +211,7 @@ class Ui_MainWindow(object):
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.textEdit.setGeometry(QtCore.QRect(50, 450, 541, 111))
         self.textEdit.setObjectName("textEdit")
-        self.textEdit.setLineWrapMode(QTextEdit.NoWrap)     # set textEdit not to wrap lines
+        self.textEdit.setLineWrapMode(QTextEdit.NoWrap)                     # set textEdit not to wrap lines
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 798, 21))
