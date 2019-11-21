@@ -26,53 +26,108 @@ def msgBoxSearch():
     msg.setWindowTitle("Search not complete")
     msg.exec()
 
+def msgBoxNoResult():
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Information)
+    msg.setText("No results found")
+    msg.setInformativeText("Index does not exist.")
+    msg.setWindowTitle("Search complete")
+    msg.exec()
+
 def checkSearchFields(self):
-    print("Under Construction...")
     searchField_id = 0
     searchField_date = datetime.date(2001, 1, 1)
+    searchDone = False
 
     try:
         if (not self.searchID_radioButton.isChecked()) and (not self.searchDate_radioButton.isChecked()):
-            msgBoxSearch()
+            pass
 
         if (self.searchID_radioButton.isChecked()) and (self.lineEdit.text() != ""):
             searchField_id = int(self.lineEdit.text())
 
             result = blockChain.search_by_id(searchField_id)
-            print(result.data)
-            resultReceipt_idSearch(self, result)
+            receiptFromIDSearch(self, result)
+            searchDone = True
 
         if (self.searchDate_radioButton.isChecked()) and (self.dateEdit.date() != ""):
             qt_date = self.dateEdit.date()
-            searchField_date = qt_date.toPyDate()
+            # searchField_date = qt_date.toPyDate()
             print(searchField_date, type(searchField_date))
+
+            result = blockChain.search_by_date(qt_date)
+            receiptFromDateSearch(self, result)
+
+            searchDone = True
+
+        if (searchDone == False):
+            msgBoxSearch()
+
 
     except Exception as ex:
         print("Error at search buttons: ", ex)
         msgBoxSearch()
 
-def resultReceipt_idSearch(self, block):
-    resultID = block.index
-    resultDate = block.timestamp
-    resultLocation = block.data[0]
-    resultItems = block.data[1]
-    resultNetTotal = block.data[2]
-    resultTaxAmount = block.data[3]
-    resultTotal = block.data[4]
-    resultPayMethod = block.data[5]
-    resultHash = block.hash
+def receiptFromDateSearch(self, blockList):
 
-    header = "ID\tDate\t\tLocation"
-    header2 = "\nNet Total\tTax\tTotal\tPayment Method"
-    header3 = "\nItems"
-    header4 = "\nHash"
+    try:
+        for index in range(len(blockList)):
+            resultID = blockList[index].index
+            resultDate = blockList[index].timestamp
+            resultLocation = blockList[index].data[0]
+            resultItems = blockList[index].data[1]
+            resultNetTotal = blockList[index].data[2]
+            resultTaxAmount = blockList[index].data[3]
+            resultTotal = blockList[index].data[4]
+            resultPayMethod = blockList[index].data[5]
+            resultHash = blockList[index].hash
 
-    resultStr = ("\n" + str(resultID) + "\t" + str(resultDate) + "\t" + str(resultLocation) + "\n")
-    resultStr2 = ("\n" + str(resultNetTotal) + "\t" + str(resultTaxAmount) + "\t" + str(resultTotal) + "\t" + str(resultPayMethod) + "\n")
-    resultStr3 = ("\n" + str(resultItems) + "\n")
-    resultStr4 = ("\n" + str(resultHash) + "\n")
+            header = "ID\tDate\t\tLocation"
+            header2 = "\nNet Total\tTax\tTotal\tPayment Method"
+            header3 = "\nItems"
+            header4 = "\nHash"
 
-    self.textEdit.setText(header + resultStr + header2 + resultStr2 + header3 + resultStr3 + header4 + resultStr4)
+            resultStr = ("\n" + str(resultID) + "\t" + str(resultDate) + "\t" + str(resultLocation) + "\n")
+            resultStr2 = ("\n" + str(resultNetTotal) + "\t" + str(resultTaxAmount) + "\t" + str(resultTotal) + "\t" + str(resultPayMethod) + "\n")
+            resultStr3 = ("\n" + str(resultItems) + "\n")
+            resultStr4 = ("\n" + str(resultHash) + "\n")
+
+            self.textEdit.append(header + resultStr + header2 + resultStr2 + header3 + resultStr3 + header4 + resultStr4)
+            self.textEdit.append("\n-----------------------------------------------------------------------------------------------------------------------------\n")
+
+    except Exception as ex:
+        msgBoxNoResult()
+
+
+def receiptFromIDSearch(self, block):
+
+    try:
+        resultID = block.index
+        resultDate = block.timestamp
+        resultLocation = block.data[0]
+        resultItems = block.data[1]
+        resultNetTotal = block.data[2]
+        resultTaxAmount = block.data[3]
+        resultTotal = block.data[4]
+        resultPayMethod = block.data[5]
+        resultHash = block.hash
+
+        header = "ID\tDate\t\tLocation"
+        header2 = "\nNet Total\tTax\tTotal\tPayment Method"
+        header3 = "\nItems"
+        header4 = "\nHash"
+
+        resultStr = ("\n" + str(resultID) + "\t" + str(resultDate) + "\t" + str(resultLocation) + "\n")
+        resultStr2 = ("\n" + str(resultNetTotal) + "\t" + str(resultTaxAmount) + "\t" + str(resultTotal) + "\t" + str(resultPayMethod) + "\n")
+        resultStr3 = ("\n" + str(resultItems) + "\n")
+        resultStr4 = ("\n" + str(resultHash) + "\n")
+
+        self.textEdit.setText(header + resultStr + header2 + resultStr2 + header3 + resultStr3 + header4 + resultStr4)
+        self.textEdit.append("\n-----------------------------------------------------------------------------------------------------------------------------\n")
+
+
+    except Exception as ex:
+        msgBoxNoResult()
 
 
 def checkOptions(self):
@@ -211,6 +266,7 @@ if __name__ == '__main__':
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+    MainWindow.setWindowTitle("Group 14 Point of Service")
     MainWindow.show()
     sys.exit(app.exec_())
 

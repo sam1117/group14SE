@@ -24,10 +24,36 @@ class BlockChain:
             block = self.blockchain[searchID]
             return block
 
+        except Exception as ex:
+            return "none"
+
+    def search_by_date(self, searchDate):
+
+        resultBlocks = []
+        searchYear   = searchDate.year()
+        searchMonth  = searchDate.month()
+        searchDay    = searchDate.day()
+
+        tmpIndex = 1
+        found = False
+        try:
+            while (found == False):
+                block = self.blockchain[tmpIndex]
+                blockYear   = block.timestamp.year
+                blockMonth  = block.timestamp.month
+                blockDay    = block.timestamp.day
+
+                if (blockDay == searchDay) and (blockMonth == searchMonth) and (blockYear == searchYear):
+                    resultBlocks.append(block)
+                    tmpIndex += 1
+
+                else:
+                    tmpIndex += 1
+
 
         except Exception as ex:
-            print("Nope!")
-
+            print("Error at search_by_date: ", ex)
+            return resultBlocks
 
     def msgTransactionReceipt(self):
         transactionID = self.addedBlock.index
