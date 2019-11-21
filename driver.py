@@ -68,6 +68,9 @@ def checkSearchFields(self):
 
 def receiptFromDateSearch(self, blockList):
 
+    if (len(blockList) == 0):
+        msgBoxNoResult()
+
     try:
         for index in range(len(blockList)):
             resultID = blockList[index].index
