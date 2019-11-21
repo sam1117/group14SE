@@ -1,0 +1,8 @@
+Code References Used In This Project (Group 14)
+
+1: https://www.tutorialspoint.com/pyqt/
+2: https://windows-hexerror.linestarve.com/q/so46710299-Why-does-PyQt-crashes-without-information-exit-code-0xC0000409
+3: https://www.youtube.com/watch?v=2aYeYdeMOLg
+4: https://blockgeeks.com/guides/python-blockchain-2/
+5: https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b
+6: https://doc.qt.io/archives/qt-4.8/qtextedit.html#using-qtextedit-as-a-display-widget
